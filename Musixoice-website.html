@@ -265,7 +265,7 @@
         document.getElementById('facebook-auth-button').addEventListener('click', () => {
             // Initialize Facebook authentication
             FB.init({
-                appId: '488130147010465',
+                appId: '',
                 cookie: true,
                 xfbml: true,
                 version: 'v15.0' // updated to latest version
@@ -288,7 +288,7 @@
             // Initialize Google authentication
             gapi.load('auth2', () => {
                 gapi.auth2.init({
-                    client_id: '677617571927',
+                    client_id: '',
                     scope: 'profile email'
                 });
 
@@ -346,8 +346,8 @@
         // Search for songs on Spotify
         function searchSongOnSpotify(songTitle, artistName) {
             const spotifyApiUrl = 'https://api.spotify.com/v1/search/tracks';
-            const apiKey = 'f82b3bb5008e449b83832ba241b30ef7';
-            const apiSecret = '0c87e84a36aa41079f0df8886bd9795b';
+            const apiKey = '';
+            const apiSecret = '';
     
             // Set up the API request headers
             const headers = new Headers({
