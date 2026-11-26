@@ -202,6 +202,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: GlassCard(
+                blur: 0,
                 onTap: () => showSongList(ctx, name, songs),
                 child: Row(children: [
                   Artwork(song: songs.isEmpty ? null : songs.first, size: 52),
@@ -245,6 +246,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
         return Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GlassCard(
+            blur: 0,
             padding: const EdgeInsets.all(10),
             onTap: () => showSongList(ctx, name, songs),
             child: Row(children: [

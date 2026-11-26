@@ -30,6 +30,11 @@ class MainActivity : AudioServiceActivity() {
                             runOnUiThread { result.error("scan", e.message, null) }
                         }
                     }
+                    "artDir" -> {
+                        val dir = File(cacheDir, "art")
+                        dir.mkdirs()
+                        result.success(dir.absolutePath)
+                    }
                     "thumb" -> {
                         val id = (call.argument<Number>("id") ?: 0).toLong()
                         val albumId = (call.argument<Number>("albumId") ?: 0).toLong()
@@ -92,7 +97,7 @@ class MainActivity : AudioServiceActivity() {
         return try {
             val bmp: Bitmap? = if (Build.VERSION.SDK_INT >= 29) {
                 val songUri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
-                contentResolver.loadThumbnail(songUri, Size(512, 512), null)
+                contentResolver.loadThumbnail(songUri, Size(300, 300), null)
             } else {
                 val artUri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), albumId)
                 contentResolver.openInputStream(artUri)?.use { BitmapFactory.decodeStream(it) }
@@ -100,7 +105,7 @@ class MainActivity : AudioServiceActivity() {
             if (bmp == null) {
                 null
             } else {
-                FileOutputStream(file).use { bmp.compress(Bitmap.CompressFormat.JPEG, 90, it) }
+                FileOutputStream(file).use { bmp.compress(Bitmap.CompressFormat.JPEG, 85, it) }
                 file.absolutePath
             }
         } catch (e: Exception) {

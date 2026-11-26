@@ -5,6 +5,7 @@ import 'screens/ai_screen.dart';
 import 'screens/explore_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/library_screen.dart';
+import 'services/device_media.dart';
 import 'services/services.dart';
 import 'theme/app_themes.dart';
 import 'widgets/glass.dart';
@@ -24,6 +25,10 @@ Future<void> main() async {
     library.load(),
     ai.load(),
   ]);
+  await DeviceMedia.init();
+  player = PlayerService(
+    withEffects: settings.eqEnabled || settings.loudnessGain > 0,
+  );
   library.settings = settings;
   player.settings = settings;
   player.onTrackStarted = library.recordPlay;

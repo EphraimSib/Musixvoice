@@ -378,6 +378,28 @@ class SettingsPage extends StatelessWidget {
         ]),
       ),
       _gap,
+      GlassCard(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('Lock screen & notification controls',
+              style: TextStyle(color: t.text, fontSize: 16, fontWeight: FontWeight.w600)),
+          const SizedBox(height: 6),
+          Text(
+              'Android needs the notification permission to show the player on the lock screen and in the notification panel.',
+              style: TextStyle(color: t.subtext, fontSize: 13)),
+          const SizedBox(height: 10),
+          Wrap(spacing: 8, children: [
+            FilledButton(
+                onPressed: () async {
+                  final ok = await Access.requestNotifications();
+                  if (!ok) await Access.openSettings();
+                },
+                child: const Text('Allow notifications')),
+            TextButton(
+                onPressed: Access.openSettings, child: const Text('Open app settings')),
+          ]),
+        ]),
+      ),
+      _gap,
       _slider(c, 'Ignore short tracks', '${settings.minTrackSeconds}s',
           settings.minTrackSeconds.toDouble(), 0, 120, 24, (v) {
         settings.update(() => settings.minTrackSeconds = v.round());
@@ -591,6 +613,13 @@ class _EqualizerCardState extends State<_EqualizerCard> {
   @override
   Widget build(BuildContext context) {
     final t = ThemeScope.of(context);
+    if (!player.effectsActive) {
+      return GlassCard(
+        child: Text(
+            'To use the equalizer or loudness boost, switch them on above, then close and reopen Musixvoice once. Bands appear here after that.',
+            style: TextStyle(color: t.subtext)),
+      );
+    }
     if (player.current == null) {
       return GlassCard(
         child: Text('Play a song first, then the equalizer bands appear here.',

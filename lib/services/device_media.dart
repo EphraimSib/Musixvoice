@@ -6,6 +6,13 @@ import '../models/song.dart';
 class DeviceMedia {
   static const _channel = MethodChannel('musixvoice/media');
   static final Map<String, Future<String?>> _thumbs = {};
+  static String? artDir;
+
+  static Future<void> init() async {
+    try {
+      artDir = await _channel.invokeMethod<String>('artDir');
+    } catch (_) {}
+  }
 
   static Future<List<Song>> scan() async {
     final raw = await _channel.invokeMethod<List<dynamic>>('scan') ?? [];
@@ -57,6 +64,12 @@ class Access {
     return r[Permission.audio]?.isGranted == true ||
         r[Permission.storage]?.isGranted == true;
   }
+
+  static Future<bool> notificationsAllowed() async =>
+      (await Permission.notification.status).isGranted;
+
+  static Future<bool> requestNotifications() async =>
+      (await Permission.notification.request()).isGranted;
 
   static Future<void> openSettings() => openAppSettings();
 }

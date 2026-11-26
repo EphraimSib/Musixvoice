@@ -33,7 +33,7 @@ class MiniPlayer extends StatelessWidget {
                         style: TextStyle(
                             color: t.text, fontWeight: FontWeight.w600, fontSize: 14)),
                     Text(player.error ?? s.artist,
-                        maxLines: 1,
+                        maxLines: player.error != null ? 3 : 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(color: t.subtext, fontSize: 12)),
                   ],

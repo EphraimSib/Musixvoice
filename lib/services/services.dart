@@ -9,7 +9,8 @@ import 'settings_service.dart';
 final themeController = ThemeController();
 final settings = AppSettings();
 final library = LibraryService();
-final player = PlayerService();
+/// Created in main() once the settings are loaded.
+late PlayerService player;
 final audius = AudiusService();
 final ai = AiService();
 

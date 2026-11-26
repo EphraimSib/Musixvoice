@@ -22,6 +22,7 @@ class SongTile extends StatelessWidget {
           final fav = library.isFavorite(song);
           final compact = settings.compactList;
           return GlassCard(
+            blur: 0,
             padding: EdgeInsets.all(compact ? 6 : 10),
             onTap: onTap,
             onLongPress: onLongPress,

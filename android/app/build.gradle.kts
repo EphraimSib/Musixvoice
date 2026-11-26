@@ -35,6 +35,9 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
+            // Shrinking removed resources/classes the media service needs.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }
