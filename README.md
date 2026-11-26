@@ -11,7 +11,11 @@ An offline and online music player with AI, built with Flutter for Android.
 
 ## Download
 
-Get the latest `Musixvoice.apk` from the [Releases](../../releases) page, then open it on your Android phone and allow "Install unknown apps" when asked.
+## Download
+
+[**⬇️ Download Musixvoice.apk (v1.0.3)**](https://github.com/EphraimSib/Musixvoice/releases/download/v1.0.3/Musixvoice.apk)
+
+Get the latest `Musixvoice.apk` from the link above (or check the [Releases](../../releases) page), then open it on your Android phone and allow "Install unknown apps" when asked.
 
 ## Build it yourself
 
@@ -28,8 +32,8 @@ The APK is written to `build/app/outputs/flutter-apk/app-release.apk`.
 Push a version tag and GitHub builds the APK for you:
 
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.3
+git push origin v1.0.3
 ```
 
 Built by Ephraim Sibale.
