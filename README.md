@@ -33,20 +33,3 @@ git push origin v1.0.0
 ```
 
 Built by Ephraim Sibale.
-
-## Screenshots
-
-<p>
-<img src="screenshots/1.jpg" width="190">
-<img src="screenshots/2.jpg" width="190">
-<img src="screenshots/3.jpg" width="190">
-</p>
-<p>
-<img src="screenshots/4.jpg" width="190">
-<img src="screenshots/5.jpg" width="190">
-<img src="screenshots/6.jpg" width="190">
-</p>
-
-## Download
-
-[Download the APK](https://github.com/EphraimSib/Musixvoice/releases/latest/download/Musixvoice.apk)
